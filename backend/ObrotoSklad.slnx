@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/ObrotoSklad.Api/ObrotoSklad.Api.csproj" />
+    <Project Path="src/ObrotoSklad.Application/ObrotoSklad.Application.csproj" />
+    <Project Path="src/ObrotoSklad.Domain/ObrotoSklad.Domain.csproj" />
+    <Project Path="src/ObrotoSklad.Infrastructure/ObrotoSklad.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/ObrotoSklad.Application.Tests/ObrotoSklad.Application.Tests.csproj" />
+  </Folder>
+</Solution>
