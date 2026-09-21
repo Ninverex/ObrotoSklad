@@ -1,12 +1,13 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using ObrotoSklad.Application.Common;
 using ObrotoSklad.Domain;
 using ObrotoSklad.Domain.Entities;
 
 
 namespace ObrotoSklad.Infrastructure.Database;
 
-public class AppDbContext : IdentityDbContext<User>
+public class AppDbContext : IdentityDbContext<User>, IAppDbContext
 {
     public AppDbContext (
         DbContextOptions<AppDbContext> options
