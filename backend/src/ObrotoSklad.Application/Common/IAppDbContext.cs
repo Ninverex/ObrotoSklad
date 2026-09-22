@@ -7,6 +7,7 @@ public interface IAppDbContext
 {
     DbSet<Product> Products { get; set; }
     DbSet<StockItem> StockItems { get; set; }
+    DbSet<Customer> Customers {get; set; }
 
     Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
 }
