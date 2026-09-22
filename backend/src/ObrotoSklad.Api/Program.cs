@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using ObrotoSklad.Application.Common;
+using ObrotoSklad.Application.Customers;
 using ObrotoSklad.Application.Products;
 using ObrotoSklad.Infrastructure.Database;
 
@@ -30,6 +31,8 @@ builder.Services.AddDbContext<AppDbContext>(options => {
 
 builder.Services.AddScoped<IAppDbContext>(provider => provider.GetRequiredService<AppDbContext>());
 builder.Services.AddScoped<IProductService, ProductService>();
+
+builder.Services.AddScoped<ICustomerService, CustomerService>();
 
 builder.Services.AddIdentity<User, IdentityRole>(options =>
 {
