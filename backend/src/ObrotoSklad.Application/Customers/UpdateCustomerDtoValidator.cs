@@ -2,7 +2,7 @@ using FluentValidation;
 
 namespace ObrotoSklad.Application.Customers;
 
-public class UpdateCustomerDtoValidator : AbstractValidator<UpgradeCustomerDto>
+public class UpdateCustomerDtoValidator : AbstractValidator<UpdateCustomerDto>
 {
     public UpdateCustomerDtoValidator()
     {
