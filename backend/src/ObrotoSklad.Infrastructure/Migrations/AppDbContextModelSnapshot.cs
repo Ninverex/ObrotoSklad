@@ -162,7 +162,7 @@ namespace ObrotoSklad.Infrastructure.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Adress")
+                    b.Property<string>("Address")
                         .IsRequired()
                         .HasColumnType("text");
 

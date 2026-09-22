@@ -12,7 +12,7 @@ using ObrotoSklad.Infrastructure.Database;
 namespace ObrotoSklad.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260921111742_InitialCreate")]
+    [Migration("20260922102640_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -165,7 +165,7 @@ namespace ObrotoSklad.Infrastructure.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Adress")
+                    b.Property<string>("Address")
                         .IsRequired()
                         .HasColumnType("text");
 

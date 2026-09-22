@@ -14,7 +14,7 @@ public class UpdateCustomerDtoValidator : AbstractValidator<UpdateCustomerDto>
             .NotEmpty().WithMessage("Adres email jest wymagany.")
             .EmailAddress().WithMessage("Niepoprawny format emaila.");
 
-        RuleFor(c => c.Adress)
+        RuleFor(c => c.Address)
             .NotEmpty().WithMessage("Adres jest wymagany.")
             .MaximumLength(300).WithMessage("Adres nie może przekraczać 200 znaków.");
 

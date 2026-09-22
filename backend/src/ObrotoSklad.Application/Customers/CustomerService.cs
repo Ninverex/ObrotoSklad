@@ -18,7 +18,7 @@ public class CustomerService : ICustomerService
         {
             Name = dto.Name,
             NIP = dto.NIP,
-            Adress = dto.Adress,
+            Address = dto.Address,
             Mail = dto.Mail,
             PhoneNumber = dto.PhoneNumber
         };
@@ -26,7 +26,7 @@ public class CustomerService : ICustomerService
         _context.Customers.Add(customer);
         await _context.SaveChangesAsync();
 
-        return new CustomerDto(customer.Id, customer.Name, customer.NIP, customer.Adress, customer.Mail, customer.PhoneNumber);
+        return new CustomerDto(customer.Id, customer.Name, customer.NIP, customer.Address, customer.Mail, customer.PhoneNumber);
     }
 
     public async Task<bool> DeleteAsync(int id)
@@ -48,7 +48,7 @@ public class CustomerService : ICustomerService
        var customers = await _context.Customers.ToListAsync();
 
        return customers
-            .Select(customer => new CustomerDto(customer.Id, customer.Name, customer.NIP, customer.Adress, customer.Mail, customer.PhoneNumber))
+            .Select(customer => new CustomerDto(customer.Id, customer.Name, customer.NIP, customer.Address, customer.Mail, customer.PhoneNumber))
             .ToList();
     }
 
@@ -60,7 +60,7 @@ public class CustomerService : ICustomerService
         {
             return null;
         }
-        return new CustomerDto(customer.Id, customer.Name, customer.NIP, customer.Adress, customer.Mail, customer.PhoneNumber);
+        return new CustomerDto(customer.Id, customer.Name, customer.NIP, customer.Address, customer.Mail, customer.PhoneNumber);
     }
 
     public async Task<CustomerDto?> UpdateAsync(int id, UpdateCustomerDto dto)
@@ -73,13 +73,13 @@ public class CustomerService : ICustomerService
         }
 
         customer.Name = dto.Name;
-        customer.Adress = dto.Adress;
+        customer.Address = dto.Address;
         customer.Mail = dto.Mail;
         customer.PhoneNumber = dto.PhoneNumber;
 
         await _context.SaveChangesAsync();
 
-        return new CustomerDto(customer.Id, customer.Name, customer.NIP, customer.Adress, customer.Mail, customer.PhoneNumber);
+        return new CustomerDto(customer.Id, customer.Name, customer.NIP, customer.Address, customer.Mail, customer.PhoneNumber);
 
     }
 }
