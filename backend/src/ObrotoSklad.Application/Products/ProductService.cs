@@ -1,7 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using ObrotoSklad.Application.Common;
 using ObrotoSklad.Domain;
-using ObrotoSklad.Domain.Entities;
 
 namespace ObrotoSklad.Application.Products;
 

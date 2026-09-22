@@ -8,6 +8,7 @@ using Microsoft.IdentityModel.Tokens;
 using ObrotoSklad.Application.Common;
 using ObrotoSklad.Application.Customers;
 using ObrotoSklad.Application.Products;
+using ObrotoSklad.Application.Warehouse;
 using ObrotoSklad.Infrastructure.Database;
 
 
@@ -21,7 +22,12 @@ var jwtAudience = builder.Configuration["Jwt:Audience"];
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.Converters.Add(new System.Text.Json.Serialization.JsonStringEnumConverter());
+    });
+
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
@@ -31,8 +37,8 @@ builder.Services.AddDbContext<AppDbContext>(options => {
 
 builder.Services.AddScoped<IAppDbContext>(provider => provider.GetRequiredService<AppDbContext>());
 builder.Services.AddScoped<IProductService, ProductService>();
-
 builder.Services.AddScoped<ICustomerService, CustomerService>();
+builder.Services.AddScoped<IStockService, IStockService>();
 
 builder.Services.AddIdentity<User, IdentityRole>(options =>
 {

@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ObrotoSklad.Application.Products;
 
@@ -56,7 +55,7 @@ namespace ObrotoSklad.Api.Controllers
         }
 
     [HttpDelete("{id}")]
-    public async Task<ActionResult<ProductDto>> DeleteProduct(int id)
+    public async Task<ActionResult> DeleteProduct(int id)
         {
             var deleted = await _productService.DeleteAsync(id);
             if (deleted is false)
