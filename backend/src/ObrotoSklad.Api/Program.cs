@@ -1,9 +1,12 @@
 using System.Text;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using ObrotoSklad.Application.Common;
+using ObrotoSklad.Application.Products;
 using ObrotoSklad.Infrastructure.Database;
 
 
@@ -59,6 +62,9 @@ builder.Services.AddAuthentication(options =>
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSecretKey))
     };
 });
+
+builder.Services.AddValidatorsFromAssemblyContaining<CreateProductDtoValidator>();
+builder.Services.AddFluentValidationAutoValidation();
 
 var app = builder.Build();
 
