@@ -8,7 +8,7 @@ public class ReceiveStockDtoValidator : AbstractValidator<ReceiveStockDto>
 {
     public ReceiveStockDtoValidator()
     {
-        RuleFor(r => r.ProductInt)
+        RuleFor(r => r.ProductId)
             .GreaterThan(0);
 
         RuleFor(r => r.Quantity)
