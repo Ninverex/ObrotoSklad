@@ -32,6 +32,8 @@ public class ProductService : IProductService
         _context.Products.Add(product);
         _context.StockItems.Add(stockItem);
 
+        await _context.SaveChangesAsync();
+
        return new ProductDto(product.Id, product.SKU, product.Name, product.Description, product.Unit, product.Price);
     }
 

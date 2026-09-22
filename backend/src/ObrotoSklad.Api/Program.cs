@@ -29,6 +29,7 @@ builder.Services.AddDbContext<AppDbContext>(options => {
 });
 
 builder.Services.AddScoped<IAppDbContext>(provider => provider.GetRequiredService<AppDbContext>());
+builder.Services.AddScoped<IProductService, ProductService>();
 
 builder.Services.AddIdentity<User, IdentityRole>(options =>
 {
