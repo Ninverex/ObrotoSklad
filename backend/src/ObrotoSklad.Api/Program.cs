@@ -8,6 +8,7 @@ using Microsoft.IdentityModel.Tokens;
 using ObrotoSklad.Application.Auth;
 using ObrotoSklad.Application.Common;
 using ObrotoSklad.Application.Customers;
+using ObrotoSklad.Application.Orders;
 using ObrotoSklad.Application.Products;
 using ObrotoSklad.Application.Warehouse;
 using ObrotoSklad.Infrastructure.Database;
@@ -41,6 +42,7 @@ builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<ICustomerService, CustomerService>();
 builder.Services.AddScoped<IStockService, StockItemService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IOrderService, OrderService>();
 builder.Services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
 
 builder.Services.AddIdentity<User, IdentityRole>(options =>
