@@ -3,5 +3,4 @@ using ObrotoSklad.Domain.Entities;
 
 namespace ObrotoSklad.Application.Invoices;
 
-public record class InvoiceItemDto(int Id, int InvoiceId, Invoice Invoice, int ProductId, Product Product, int Quantity, decimal UnitPrice, decimal VatRate, decimal NetAmount, decimal GrossAmount);
-
+public record InvoiceItemDto(int ProductId, string ProductName, int Quantity, decimal UnitPrice, decimal VatRate, decimal NetAmount, decimal GrossAmount);
