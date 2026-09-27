@@ -12,8 +12,8 @@ using ObrotoSklad.Infrastructure.Database;
 namespace ObrotoSklad.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260923114222_AddConfirmedAtToOrder")]
-    partial class AddConfirmedAtToOrder
+    [Migration("20260927152126_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

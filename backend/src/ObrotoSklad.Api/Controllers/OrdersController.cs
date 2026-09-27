@@ -24,7 +24,7 @@ namespace ObrotoSklad.Api.Controllers
 
             var order = await _orderService.CreateAsync(dto, userId!);
 
-            return CreatedAtAction(nameof(GetOrderById), new { id = order.Id}, order);
+            return CreatedAtAction(nameof(GetOrderById), new { orderId = order.Id}, order);
         }
         
         [HttpGet]
