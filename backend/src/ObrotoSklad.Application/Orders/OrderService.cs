@@ -3,6 +3,7 @@ using ObrotoSklad.Application.Warehouse;
 using ObrotoSklad.Domain;
 using ObrotoSklad.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using ObrotoSklad.Application.Invoices;
 
 namespace ObrotoSklad.Application.Orders;
 
@@ -10,11 +11,13 @@ public class OrderService : IOrderService
 {
     private readonly IAppDbContext _context;
     private readonly IStockService _stockService;
+    private readonly IInvoiceService _invoiceService;
 
-    public OrderService(IAppDbContext context, IStockService stockService)
+    public OrderService(IAppDbContext context, IStockService stockService, IInvoiceService invoiceService)
     {
         _context = context;
         _stockService = stockService;
+        _invoiceService = invoiceService;
     }
 
     public async Task<OrderDto> CancelAsync(int orderId, string userId)
@@ -185,6 +188,8 @@ public class OrderService : IOrderService
         order.Status = OrderStatus.Fullfiled;
 
         await _context.SaveChangesAsync();
+
+        await _invoiceService.GenerateFromOrderAsync(order.Id);
 
         var orderItemDtos = order.Items.Select(i => new OrderItemDto(i.ProductId, i.Product!.Name, i.Quantity, i.UnitPrice, i.Quantity * i.UnitPrice)).ToList();
 
