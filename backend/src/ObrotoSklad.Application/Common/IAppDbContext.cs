@@ -12,6 +12,8 @@ public interface IAppDbContext
     DbSet<StockMovement> StockMovements { get; set; }
     DbSet<Order> Orders { get; set; }
     DbSet<OrderItem> OrderItems { get; set; }
+    DbSet<Invoice> Invoices { get; set; }
+    DbSet<InvoiceItem> InvoiceItems { get; set; }
 
     Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
 }
