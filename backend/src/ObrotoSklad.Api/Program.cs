@@ -47,7 +47,6 @@ builder.Services.AddScoped<IInvoiceService, InvoiceService>();
 builder.Services.AddScoped<IOrderService, OrderService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
-
 builder.Services.AddIdentity<User, IdentityRole>(options =>
 {
     options.Password.RequireDigit = true;
@@ -83,6 +82,16 @@ builder.Services.AddAuthentication(options =>
 
 builder.Services.AddValidatorsFromAssemblyContaining<CreateProductDtoValidator>();
 builder.Services.AddFluentValidationAutoValidation();
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("Frontend", policy =>
+    {
+        policy.WithOrigins("http://localhost:4200")
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
 
 var app = builder.Build();
 
