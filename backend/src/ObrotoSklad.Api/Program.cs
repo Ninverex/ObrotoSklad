@@ -121,6 +121,8 @@ using (var scope = app.Services.CreateScope())
             await roleManager.CreateAsync(new IdentityRole(role));
         }
     }
+    
+    await DbSeeder.SeedAsync(scope.ServiceProvider);
 }
 
 app.MapControllers();
