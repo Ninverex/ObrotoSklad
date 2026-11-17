@@ -74,6 +74,24 @@ public class StockServiceTests
     }
 
     [Fact]
+    public async Task History_IsSortedNewestFirst()
+    {
+        await using var db = TestDb.Create();
+        var product = await TestDb.AddProductAsync(db, onHand: 100);
+        var service = new StockService(db);
+
+        await service.ReceiveStockAsync(new ReceiveStockDto(product.Id, 10), "user-1");
+        await Task.Delay(10);
+        await service.ReserveStockAsync(new ReserveStockDto(product.Id, 5, 1), "user-1");
+
+        var history = await service.GetMovementHistoryAsync(product.Id);
+
+        Assert.Equal(2, history.Count);
+        Assert.Equal(MovementType.Reserved, history[0].Type);
+        Assert.Equal(MovementType.In, history[1].Type);
+    }
+    
+    [Fact]
     public async Task Release_DecreasesReserved()
     {
         await using var db = TestDb.Create();
