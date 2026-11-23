@@ -7,11 +7,10 @@ Repozytorium zawiera backend w **ASP.NET Core 10** oraz frontend w **Angular 22*
 ## Spis treści
 
 1. [Funkcjonalności](#funkcjonalności)
-2. [Zrzuty ekranu](#zrzuty-ekranu)
-3. [Technologie](#technologie)
-4. [Architektura i struktura repozytorium](#architektura-i-struktura-repozytorium)
-5. [Role użytkowników](#role-użytkowników)
-6. [Proces obsługi zamówienia](#proces-obsługi-zamówienia)
+2. [Technologie](#technologie)
+3. [Architektura i struktura repozytorium](#architektura-i-struktura-repozytorium)
+4. [Role użytkowników](#role-użytkowników)
+5. [Proces obsługi zamówienia](#proces-obsługi-zamówienia)
 
 
 ## Funkcjonalności
@@ -47,44 +46,6 @@ Repozytorium zawiera backend w **ASP.NET Core 10** oraz frontend w **Angular 22*
 - Anulowanie zamówień zgodnie z regułami biznesowymi.
 - Automatyczne generowanie faktury po zrealizowaniu zamówienia.
 - Przeglądanie listy faktur oraz szczegółów pojedynczej faktury.
-
-## Zrzuty ekranu
-
-Zrzuty interfejsu można wygenerować z **uruchomionej aplikacji**, korzystając ze skryptu `frontend/scripts/capture-screenshots.mjs`. Skrypt zapisuje obrazy w `docs/screenshots/` i automatycznie umieszcza odnośniki w tym miejscu dokumentacji. Nie używa makiet ani przykładowych grafik.
-
-<!-- SCREENSHOTS_START -->
-Zrzuty ekranu nie zostały jeszcze wygenerowane. Po uruchomieniu aplikacji wykonaj instrukcję poniżej, aby wstawić rzeczywiste obrazy interfejsu.
-<!-- SCREENSHOTS_END -->
-
-### Generowanie zrzutów ekranu
-
-1. Uruchom PostgreSQL, backend i frontend zgodnie z sekcją [Instalacja i uruchomienie](#instalacja-i-uruchomienie). Upewnij się, że aplikacja działa pod `http://localhost:4200` oraz że nie występują błędy kompilacji ani połączenia z API.
-2. W osobnym terminalu zainstaluj Playwright i jego przeglądarkę (jednorazowo):
-
-   ```bash
-   cd frontend
-   npm install --no-save playwright
-   npx playwright install chromium
-   ```
-
-3. Przechwyć ekrany logowania i rejestracji:
-
-   ```bash
-   node scripts/capture-screenshots.mjs
-   ```
-
-4. Aby wykonać również zrzuty modułów dostępnych po zalogowaniu, ustaw **dane konta testowego** (nie zapisuj ich w repozytorium). Przykład w PowerShell:
-
-   ```powershell
-   $env:SCREENSHOT_EMAIL = "konto-testowe@example.com"
-   $env:SCREENSHOT_PASSWORD = "HASLO_KONTA_TESTOWEGO"
-   node scripts/capture-screenshots.mjs
-   Remove-Item Env:SCREENSHOT_EMAIL, Env:SCREENSHOT_PASSWORD
-   ```
-
-   W systemach Linux i macOS można przekazać zmienne tymczasowo, np. `SCREENSHOT_EMAIL=... SCREENSHOT_PASSWORD=... node scripts/capture-screenshots.mjs`.
-
-Domyślnie skrypt przechwytuje ekrany w rozdzielczości 1440 × 900 px. Jeśli używasz innego adresu frontendu, podaj `SCREENSHOT_URL` (np. `http://localhost:4300`). Generowane pliki PNG oraz zaktualizowany `README.md` należy dodać do repozytorium w jednym commicie. Przed publikacją przejrzyj obrazy pod kątem danych osobowych i informacji poufnych; najlepiej pracować na bazie testowej.
 
 ## Technologie
 
